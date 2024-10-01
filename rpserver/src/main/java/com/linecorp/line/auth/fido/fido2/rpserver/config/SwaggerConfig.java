@@ -40,7 +40,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors
-                              .basePackage("com.linecorp.line.auth.fido.fido2.rpserver.controller"))
+                        .basePackage("com.linecorp.line.auth.fido.fido2.rpserver.controller"))
                 .paths(Predicates.not(PathSelectors.regex("/")))
                 .build()
                 .apiInfo(metaData());
@@ -49,7 +49,7 @@ public class SwaggerConfig {
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
                 .title("FIDO2 RP SERVER REST API")
-                .description("If you want to know the details of the WebAuthn standard, you can also refer to the official documentation. \n\n https://www.w3.org/TR/webauthn-2/" )
+                .description("If you want to know the details of the WebAuthn standard, you can also refer to the official documentation. \n\n https://www.w3.org/TR/webauthn-2/")
                 .version("1.0.0")
                 .contact(new Contact("Kyung-Joon Park", null, "kyungjoon.park@linecorp.com"))
                 .build();

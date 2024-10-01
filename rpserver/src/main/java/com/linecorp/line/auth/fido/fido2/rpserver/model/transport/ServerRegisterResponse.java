@@ -27,7 +27,7 @@ public class ServerRegisterResponse {
 
     public boolean isValid() {
         return "U2F_V2".equals(version) &&
-               registrationData != null &&
-               clientData != null;
+                registrationData != null &&
+                clientData != null;
     }
 }

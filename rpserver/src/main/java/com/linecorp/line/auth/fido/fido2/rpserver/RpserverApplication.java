@@ -22,7 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RpserverApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RpserverApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RpserverApplication.class, args);
+    }
 }

@@ -27,7 +27,7 @@ public class ServerSignResponse {
 
     public boolean isValid() {
         return keyHandle != null &&
-               signatureData != null &&
-               clientData != null;
+                signatureData != null &&
+                clientData != null;
     }
 }

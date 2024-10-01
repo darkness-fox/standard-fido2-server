@@ -82,8 +82,8 @@ public class CredentialController {
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(getDeleteCredentialsUri);
         URI uri = uriComponentsBuilder.path(credentialId)
-                                      .queryParam("rpId", rpId)
-                                      .build().toUri();
+                .queryParam("rpId", rpId)
+                .build().toUri();
 
         ResponseEntity<GetCredentialResult> response = restTemplate
                 .exchange(uri, HttpMethod.GET, null, GetCredentialResult.class);
@@ -98,8 +98,8 @@ public class CredentialController {
         String userId = createUserId(username);
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(getDeleteCredentialsUri);
         URI uri = uriComponentsBuilder.queryParam("rpId", rpId)
-                                      .queryParam("userId", userId)
-                                      .build().toUri();
+                .queryParam("userId", userId)
+                .build().toUri();
 
         ResponseEntity<GetCredentialsResult> response = restTemplate
                 .exchange(uri, HttpMethod.GET, null, GetCredentialsResult.class);
@@ -113,8 +113,8 @@ public class CredentialController {
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(getDeleteCredentialsUri);
         URI uri = uriComponentsBuilder.path(credentialId)
-                                      .queryParam("rpId", rpId)
-                                      .build().toUri();
+                .queryParam("rpId", rpId)
+                .build().toUri();
 
         ResponseEntity<BaseResponse> response = restTemplate
                 .exchange(uri, HttpMethod.DELETE, null, BaseResponse.class);
@@ -130,8 +130,8 @@ public class CredentialController {
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(getDeleteCredentialsUri);
         URI uri = uriComponentsBuilder.queryParam("rpId", rpId)
-                                      .queryParam("userId", userId)
-                                      .build().toUri();
+                .queryParam("userId", userId)
+                .build().toUri();
 
         ResponseEntity<BaseResponse> response = restTemplate
                 .exchange(uri, HttpMethod.DELETE, null, BaseResponse.class);

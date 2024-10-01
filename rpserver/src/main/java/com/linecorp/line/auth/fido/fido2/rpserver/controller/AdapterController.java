@@ -202,7 +202,7 @@ public class AdapterController {
 
         if (!StringUtils.isEmpty(rpPort)) {
             builder.append(":")
-                   .append(rpPort);
+                    .append(rpPort);
         }
 
         // set header
@@ -308,7 +308,7 @@ public class AdapterController {
 
         if (!StringUtils.isEmpty(rpPort)) {
             builder.append(":")
-                   .append(rpPort);
+                    .append(rpPort);
         }
 
         // set header
