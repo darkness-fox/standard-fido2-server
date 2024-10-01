@@ -20,7 +20,7 @@ $(window).on('load', function () {
     // $("#cancel").on('click', () => cancelButtonClicked());
     $("#check").on('click', () => checkButtonClicked());
 
-    //Update UI to reflect availability of platform authenticator
+    // Update UI to reflect availability of platform authenticator
     if (PublicKeyCredential && typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable !== "function") {
         markPlatformAuthenticatorUnavailable();
     } else if (PublicKeyCredential && typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === "function") {
@@ -44,7 +44,7 @@ let performMakeCredReq = (makeCredReq) => {
     makeCredReq.challenge = base64UrlDecode(makeCredReq.challenge);
     makeCredReq.user.id = base64UrlDecode(makeCredReq.user.id);
 
-    //Base64url decoding of id in excludeCredentials
+    // Base64url decoding of id in excludeCredentials
     if (makeCredReq.excludeCredentials instanceof Array) {
         for (let i of makeCredReq.excludeCredentials) {
             if ('id' in i) {
@@ -66,12 +66,12 @@ let performMakeCredReq = (makeCredReq) => {
 let performGetCredReq = (getCredReq) => {
     getCredReq.challenge = base64UrlDecode(getCredReq.challenge);
 
-    //Base64url decoding of id in allowCredentials
+    // Base64url decoding of id in allowCredentials
     if (getCredReq.allowCredentials instanceof Array) {
         for (let i of getCredReq.allowCredentials) {
-          if ('id' in i) {
-            i.id = base64UrlDecode(i.id);
-          }
+            if ('id' in i) {
+                i.id = base64UrlDecode(i.id);
+            }
         }
     }
 
@@ -99,8 +99,8 @@ function markPlatformAuthenticatorUnavailable() {
  * Disables all input controls and buttons on the page
  */
 function disableControls() {
-    $('#register').attr('disabled','');
-    $('#authenticate').attr('disabled','');
+    $('#register').attr('disabled', '');
+    $('#authenticate').attr('disabled', '');
     $("#status").addClass('hidden');
 }
 
@@ -117,17 +117,17 @@ function enableControls() {
  * Handler for create button being pressed
  */
 function registerButtonClicked() {
-    let username  = $("input[name='username']").val();
-    let displayName  = $("input[name='userDisplayName']").val();
+    let username = $("input[name='username']").val();
+    let displayName = $("input[name='userDisplayName']").val();
     if (username === "") {
         $("#status").text("Input user name first");
         $("#status").removeClass('hidden');
         return;
     }
     if (displayName === "") {
-      $("#status").text("Input display name first");
-      $("#status").removeClass('hidden');
-      return;
+        $("#status").text("Input display name first");
+        $("#status").removeClass('hidden');
+        return;
     }
 
     disableControls();
@@ -185,13 +185,11 @@ function registerButtonClicked() {
     getRegChallenge(serverPublicKeyCredentialCreationOptionsRequest)
         .then(createCredentialOptions => {
             return createCredential(createCredentialOptions);
-        })
-        .then(() => {
+        }).then(() => {
             $("#status").text("Successfully created credential");
             $("#registerSpinner").addClass("hidden");
             enableControls();
-        })
-        .catch(e => {
+        }).catch(e => {
             $("#status").text("Error: " + e);
             $("#registerSpinner").addClass("hidden");
             enableControls();
@@ -205,7 +203,7 @@ function authenticateButtonClicked() {
     disableControls();
     $("#authenticateSpinner").removeClass("hidden");
 
-    let username  = $("input[name='username']").val();
+    let username = $("input[name='username']").val();
     let userVerification = $("input[name='userVerificationRequired']:checked").val();
 
     // prepare parameter
@@ -217,8 +215,7 @@ function authenticateButtonClicked() {
     getAuthChallenge(serverPublicKeyCredentialGetOptionsRequest)
         .then(getCredentialOptions => {
             return getAssertion(getCredentialOptions);
-        })
-        .then(() => {
+        }).then(() => {
             $("#status").text("Successfully verified credential");
             $("#authenticateSpinner").addClass("hidden");
             enableControls()
@@ -238,50 +235,50 @@ function cancelButtonClicked() {
 
 function checkButtonClicked() {
     $("#status").addClass('hidden');
-    let username  = $("input[name='username']").val();
+    let username = $("input[name='username']").val();
     if (username === "") {
         $("#status").text("Input username first");
         $("#status").removeClass('hidden');
     } else {
-    getCredentialWithUserName(username)
-        .then(credentials => {
-            if (credentials.length > 0) {
-                $("#credentialListContainer").html(getTableWithData(credentials));
-            } else {
-                $("#status").text("No credential for username (" + username + ")");
-                $("#status").removeClass('hidden');
-            }
-        }).catch(e => {
-            $("#status").text("Error: " + e);
-            enableControls();
-        });
+        getCredentialWithUserName(username)
+            .then(credentials => {
+                if (credentials.length > 0) {
+                    $("#credentialListContainer").html(getTableWithData(credentials));
+                } else {
+                    $("#status").text("No credential for username (" + username + ")");
+                    $("#status").removeClass('hidden');
+                }
+            }).catch(e => {
+                $("#status").text("Error: " + e);
+                enableControls();
+            });
     }
 }
 
 function getTableWithData(credentials) {
-  let table = '<div class="table-responsive">Registered Credentials\n' +
-              '<table class="table table-hover">\n' +
-              '  <thead>\n' +
-              '    <tr>\n' +
-              '      <th scope="col">#</th>\n' +
-              '      <th scope="col">Data</th>\n' +
-              '    </tr>\n' +
-              '  </thead>\n' +
-              '  <tbody>\n';
-  let count = 1;
-  credentials.forEach(function(credential) {
-      table += '    <tr>\n' +
-               '      <th scope="row">' + count + '</th>\n' +
-               '      <td>' + JSON.stringify(credential, null, '\t') + '</td>\n' +
-               '    </tr>';
-      count++;
-  });
+    let table = '<div class="table-responsive">Registered Credentials\n' +
+        '<table class="table table-hover">\n' +
+        '  <thead>\n' +
+        '    <tr>\n' +
+        '      <th scope="col">#</th>\n' +
+        '      <th scope="col">Data</th>\n' +
+        '    </tr>\n' +
+        '  </thead>\n' +
+        '  <tbody>\n';
+    let count = 1;
+    credentials.forEach(function (credential) {
+        table += '    <tr>\n' +
+            '      <th scope="row">' + count + '</th>\n' +
+            '      <td>' + JSON.stringify(credential, null, '\t') + '</td>\n' +
+            '    </tr>';
+        count++;
+    });
 
-  table += '  </tbody>\n' +
-           '</table>\n' +
-           '</div>';
+    table += '  </tbody>\n' +
+        '</table>\n' +
+        '</div>';
 
-  return table;
+    return table;
 }
 
 
@@ -344,14 +341,14 @@ function createCredential(options) {
         return Promise.reject("WebAuthn APIs are not available on this user agent.");
     }
 
-    return navigator.credentials.create({publicKey: options, signal: abortSignal})
+    return navigator.credentials.create({ publicKey: options, signal: abortSignal })
         .then(rawAttestation => {
             logObject("raw attestation", rawAttestation);
 
             let attestation = {
                 rawId: base64UrlEncode(rawAttestation.rawId),
                 id: base64UrlEncode(rawAttestation.rawId),
-                response : {
+                response: {
                     clientDataJSON: base64UrlEncode(rawAttestation.response.clientDataJSON),
                     attestationObject: base64UrlEncode(rawAttestation.response.attestationObject)
                 },
@@ -376,15 +373,13 @@ function createCredential(options) {
             logVariable("id", attestation.type);
 
             return rest_post("/attestation/result", attestation);
-        })
-        .catch(function(error) {
+        }).catch(function (error) {
             logVariable("create credential error", error);
             if (error == "AbortError") {
                 console.info("Aborted by user");
             }
             return Promise.reject(error);
-        })
-        .then(response => {
+        }).then(response => {
             if (response.status !== 'ok') {
                 return Promise.reject(response.errorMessage);
             } else {
@@ -402,7 +397,7 @@ function getAssertion(options) {
         return Promise.reject("WebAuthn APIs are not available on this user agent.");
     }
 
-    return navigator.credentials.get({publicKey: options, signal: abortSignal})
+    return navigator.credentials.get({ publicKey: options, signal: abortSignal })
         .then(rawAssertion => {
             logObject("raw assertion", rawAssertion);
 
@@ -410,10 +405,10 @@ function getAssertion(options) {
                 rawId: base64UrlEncode(rawAssertion.rawId),
                 id: base64UrlEncode(rawAssertion.rawId),
                 response: {
-                  clientDataJSON: base64UrlEncode(rawAssertion.response.clientDataJSON),
-                  userHandle: base64UrlEncode(rawAssertion.response.userHandle),
-                  signature: base64UrlEncode(rawAssertion.response.signature),
-                  authenticatorData: base64UrlEncode(rawAssertion.response.authenticatorData)
+                    clientDataJSON: base64UrlEncode(rawAssertion.response.clientDataJSON),
+                    userHandle: base64UrlEncode(rawAssertion.response.userHandle),
+                    signature: base64UrlEncode(rawAssertion.response.signature),
+                    authenticatorData: base64UrlEncode(rawAssertion.response.authenticatorData)
                 },
                 type: rawAssertion.type,
             };
@@ -432,15 +427,13 @@ function getAssertion(options) {
             logVariable("id", assertion.type);
 
             return rest_post("/assertion/result", assertion);
-        })
-        .catch(function(error) {
+        }).catch(function (error) {
             logVariable("get assertion error", error);
             if (error == "AbortError") {
                 console.info("Aborted by user");
             }
             return Promise.reject(error);
-        })
-        .then(response => {
+        }).then(response => {
             if (response.status !== 'ok') {
                 return Promise.reject(response.errorMessage);
             } else {
@@ -474,7 +467,7 @@ function base64UrlDecode(base64url) {
         .replace(/_/g, "/");
     let diff = input.length % 4;
     if (!diff) {
-        while(diff) {
+        while (diff) {
             input += '=';
             diff--;
         }
@@ -503,7 +496,7 @@ function arrayBufferToString(arrayBuffer) {
  * @param {string} string string to convert
  * @returns {ArrayBuffer}
  */
-function stringToArrayBuffer(str){
+function stringToArrayBuffer(str) {
     return Uint8Array.from(str, c => c.charCodeAt(0)).buffer;
 }
 
@@ -544,8 +537,7 @@ function rest_get(endpoint) {
     return fetch(endpoint, {
         method: "GET",
         credentials: "same-origin"
-    })
-    .then(response => {
+    }).then(response => {
         return response.json();
     });
 }
@@ -564,8 +556,7 @@ function rest_post(endpoint, object) {
         headers: {
             "content-type": "application/json"
         }
-    })
-    .then(response => {
+    }).then(response => {
         return response.json();
     });
 }
@@ -584,8 +575,7 @@ function rest_put(endpoint, object) {
         headers: {
             "content-type": "application/json"
         }
-    })
-    .then(response => {
+    }).then(response => {
         return response.json();
     });
 }
