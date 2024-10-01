@@ -35,8 +35,8 @@ public enum COSEKeyType {
 
     public static COSEKeyType fromValue(int value) {
         return Arrays.stream(COSEKeyType.values())
-              .filter(e -> e.value == value)
-              .findFirst()
-              .get();
+                .filter(e -> e.value == value)
+                .findFirst()
+                .get();
     }
 }

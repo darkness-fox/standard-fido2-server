@@ -200,7 +200,7 @@ public class ResponseServiceImpl extends ResponseCommonService implements Respon
 
         UserKey userKey = getUserKey(serverPublicKeyCredential, rpId);
         verifyUserHandle(serverPublicKeyCredential, userKey);
-        verifyAuthDataValues(rpId, session, authData,userKey.getAaguid());
+        verifyAuthDataValues(rpId, session, authData, userKey.getAaguid());
         verifySignature(serverPublicKeyCredential, authDataBytes, userKey);
 
         checkSignCounter(authData, userKey);

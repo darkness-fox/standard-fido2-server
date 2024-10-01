@@ -29,13 +29,14 @@ public enum AuthenticatorVendor {
     FEITIAN("feitian"),
     APPLE("apple");
 
-    @Getter private final String value;
+    @Getter
+    private final String value;
 
-    public static AuthenticatorVendor fromValue(String value){
+    public static AuthenticatorVendor fromValue(String value) {
         return Arrays.stream(AuthenticatorVendor.values())
-                     .filter(e -> e.value.equals(value.toLowerCase()))
-                     .findFirst()
-                     .get();
+                .filter(e -> e.value.equals(value.toLowerCase()))
+                .findFirst()
+                .get();
     }
 
 }

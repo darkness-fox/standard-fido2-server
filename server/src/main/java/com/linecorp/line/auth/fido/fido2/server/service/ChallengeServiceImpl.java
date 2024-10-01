@@ -131,11 +131,11 @@ public class ChallengeServiceImpl implements ChallengeService {
         // set server response
         RegOptionResponse regOptionResponse =
                 builder.serverResponse(ServerResponse
-                                               .builder()
-                                               .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
-                                               .internalError(InternalErrorCode.SUCCESS.name())
-                                               .build())
-                       .build();
+                                .builder()
+                                .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
+                                .internalError(InternalErrorCode.SUCCESS.name())
+                                .build())
+                        .build();
 
         session.setRegOptionResponse(regOptionResponse);
 
@@ -149,6 +149,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 
     /**
      * Get options for auth operation
+     *
      * @param authOptionRequest
      * @return
      */
@@ -202,10 +203,10 @@ public class ChallengeServiceImpl implements ChallengeService {
         // set server response
         AuthOptionResponse authOptionResponse =
                 builder.serverResponse(ServerResponse
-                        .builder()
-                        .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
-                        .internalError(InternalErrorCode.SUCCESS.name())
-                        .build())
+                                .builder()
+                                .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
+                                .internalError(InternalErrorCode.SUCCESS.name())
+                                .build())
                         .build();
 
         session.setAuthOptionResponse(authOptionResponse);

@@ -22,14 +22,14 @@ import java.util.Arrays;
 public class UnsignedUtil {
     public static int readUINT16BE(byte[] input) {
         return ((input[0] & 0xFF) << 8) |
-               (input[1] & 0xFF);
+                (input[1] & 0xFF);
     }
 
     public static long readUINT32BE(byte[] input) {
         return ((input[0] & 0xFFL) << 24) |
-               ((input[1] & 0xFFL) << 16) |
-               ((input[2] & 0xFFL) << 8) |
-               (input[3] & 0xFFL);
+                ((input[1] & 0xFFL) << 16) |
+                ((input[2] & 0xFFL) << 8) |
+                (input[3] & 0xFFL);
     }
 
     public static byte[] writeUINT32BE(long input) {

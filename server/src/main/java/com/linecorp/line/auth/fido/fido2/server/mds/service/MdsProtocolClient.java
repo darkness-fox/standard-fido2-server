@@ -45,7 +45,7 @@ public class MdsProtocolClient {
         service.fetchMetadata(url).enqueue(callback);
     }
 
-    public Response<ResponseBody>  fetchSyncMetadataToc(String url) throws IOException {
+    public Response<ResponseBody> fetchSyncMetadataToc(String url) throws IOException {
         return service.fetchMetadataToc(url).execute();
     }
 

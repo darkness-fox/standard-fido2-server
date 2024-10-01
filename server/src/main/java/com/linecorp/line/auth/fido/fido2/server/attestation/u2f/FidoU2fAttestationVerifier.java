@@ -48,6 +48,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class FidoU2fAttestationVerifier implements AttestationVerifier {
     final byte[] U2F_STATIC_AAGUID = new byte[16];
+
     @Override
     public AttestationStatementFormatIdentifier getIdentifier() {
         return AttestationStatementFormatIdentifier.FIDO_U2F;
@@ -60,8 +61,8 @@ public class FidoU2fAttestationVerifier implements AttestationVerifier {
 
         // check validity
         if (fidoU2f.getSig() == null ||
-            fidoU2f.getSig().length == 0 ||
-            fidoU2f.getX5c() == null || fidoU2f.getX5c().size() != 1) {
+                fidoU2f.getSig().length == 0 ||
+                fidoU2f.getX5c() == null || fidoU2f.getX5c().size() != 1) {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.INVALID_ATTESTATION_FORMAT);
         }
 
@@ -92,17 +93,17 @@ public class FidoU2fAttestationVerifier implements AttestationVerifier {
 
             ECCKey eccKey = (ECCKey) authenticatorData.getAttestedCredentialData().getCredentialPublicKey();
             if (eccKey.getX() == null ||
-                eccKey.getX().length != 32 ||
-                eccKey.getY() == null ||
-                eccKey.getY().length != 32) {
+                    eccKey.getX().length != 32 ||
+                    eccKey.getY() == null ||
+                    eccKey.getY().length != 32) {
                 throw new FIDO2ServerRuntimeException(InternalErrorCode.U2F_ATTESTATION_USER_KEY_INVALID);
             }
 
             int u2fKeyLength = 65;    // 0x04 + x.length + y.length
             int verificationDataSize = 1 + authenticatorData.getRpIdHash().length +
-                                       clientDataHash.length +
-                                       authenticatorData.getAttestedCredentialData().getCredentialId().length +
-                                       u2fKeyLength;
+                    clientDataHash.length +
+                    authenticatorData.getAttestedCredentialData().getCredentialId().length +
+                    u2fKeyLength;
 
             byte[] verificationData = ByteBuffer
                     .allocate(verificationDataSize)

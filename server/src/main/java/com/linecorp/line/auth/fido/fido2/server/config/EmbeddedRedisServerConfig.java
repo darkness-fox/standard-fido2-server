@@ -82,7 +82,8 @@ public class EmbeddedRedisServerConfig {
                 pidInfo.append(line);
             }
 
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
 
         return !StringUtils.isEmpty(pidInfo.toString());
     }

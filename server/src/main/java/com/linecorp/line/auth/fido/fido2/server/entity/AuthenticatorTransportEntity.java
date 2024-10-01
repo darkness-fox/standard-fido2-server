@@ -40,7 +40,7 @@ public class AuthenticatorTransportEntity {
     private Long id;    // internal
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "user_key_id", nullable = false)
+    @JoinColumn(name = "user_key_id", nullable = false)
     private UserKeyEntity userKeyEntity;
 
     @Column

@@ -71,8 +71,8 @@ public class AndroidKeyAttestationVerifier implements AttestationVerifier {
 
         // check validity
         if (androidKey.getSig() == null ||
-            androidKey.getSig().length == 0 ||
-            androidKey.getX5c() == null || androidKey.getX5c().isEmpty()) {
+                androidKey.getSig().length == 0 ||
+                androidKey.getX5c() == null || androidKey.getX5c().isEmpty()) {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.INVALID_ATTESTATION_FORMAT);
         }
 
@@ -143,7 +143,7 @@ public class AndroidKeyAttestationVerifier implements AttestationVerifier {
             // TODO: Need to check spec again, spec dealing with android key attestation is weird
         } else {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.ANDROID_KEY_ATTESTATION_CERTIFICATE_INVALID,
-                                                  "Authorization list is null");
+                    "Authorization list is null");
         }
 
         return AttestationVerificationResult
@@ -159,7 +159,7 @@ public class AndroidKeyAttestationVerifier implements AttestationVerifier {
     private ASN1Sequence extractASN1Sequence(X509Certificate certificate) {
         byte[] attestationExtensionBytes = certificate.getExtensionValue(KEY_DESCRIPTION_OID);
         if (attestationExtensionBytes == null
-            || attestationExtensionBytes.length == 0) {
+                || attestationExtensionBytes.length == 0) {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.ANDROID_KEY_ATTESTATION_DATA_NOT_FOUND, "Couldn't find the keystore attestation extension data.");
         }
 
@@ -212,13 +212,13 @@ public class AndroidKeyAttestationVerifier implements AttestationVerifier {
         }
 
         return builder.attestationVersion(attestationVersion)
-                      .attestationSecurityLevel(attestationSecurityLevel)
-                      .keymasterVersion(keymasterVersion)
-                      .keymasterSecurityLevel(keymasterSecurityLevel)
-                      .attestationChallenge(attestationChallenge)
-                      .softwareEnforced(softwareEnforced)
-                      .teeEnforced(teeEnforced)
-                      .build();
+                .attestationSecurityLevel(attestationSecurityLevel)
+                .keymasterVersion(keymasterVersion)
+                .keymasterSecurityLevel(keymasterSecurityLevel)
+                .attestationChallenge(attestationChallenge)
+                .softwareEnforced(softwareEnforced)
+                .teeEnforced(teeEnforced)
+                .build();
     }
 
     private AuthorizationList getAuthorizationList(ASN1Encodable[] asn1Encodables) {

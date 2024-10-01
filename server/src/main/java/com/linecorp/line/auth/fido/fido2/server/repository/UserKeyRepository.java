@@ -26,5 +26,6 @@ import java.util.List;
 @Repository
 public interface UserKeyRepository extends CrudRepository<UserKeyEntity, Long> {
     List<UserKeyEntity> findAllByRpEntityIdAndUserId(String rpId, String userId);
+
     UserKeyEntity findByRpEntityIdAndCredentialId(String rpId, String credentialId);
 }

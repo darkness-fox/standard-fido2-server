@@ -20,7 +20,10 @@ import com.linecorp.line.auth.fido.fido2.server.model.Session;
 
 public interface SessionService {
     Session createSessionData();
+
     void createSession(Session session);
+
     Session getSession(String sessionId);
+
     void revokeSession(String sessionId);
 }

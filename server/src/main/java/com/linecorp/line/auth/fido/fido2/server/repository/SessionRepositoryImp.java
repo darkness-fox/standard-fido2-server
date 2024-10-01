@@ -38,12 +38,12 @@ public class SessionRepositoryImp implements SessionRepository {
     private long sessionTtlMillis;
 
     @Autowired
-    public SessionRepositoryImp(RedisTemplate<String, Object> redisTemplate){
+    public SessionRepositoryImp(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
     @PostConstruct
-    private void init(){
+    private void init() {
         valueOperations = redisTemplate.opsForValue();
     }
 

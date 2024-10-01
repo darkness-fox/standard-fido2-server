@@ -29,7 +29,8 @@ public enum TpmHashAlgorithm {
     SHA512(0x000D),
     SM3_256(0x0012);
 
-    @Getter private final int value;
+    @Getter
+    private final int value;
 
     public static TpmHashAlgorithm fromValue(int value) {
         return Arrays.stream(TpmHashAlgorithm.values())

@@ -95,7 +95,7 @@ public class AndroidSafetyNetAttestationVerifier implements AttestationVerifier 
         }
 
         if (attestationCertificates == null ||
-            attestationCertificates.isEmpty()) {
+                attestationCertificates.isEmpty()) {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.ANDROID_SAFETYNET_ATTESTATION_CERTIFICATE_NOT_INCLUDED);
         }
 
@@ -119,7 +119,7 @@ public class AndroidSafetyNetAttestationVerifier implements AttestationVerifier 
             signatureAlgorithm = Algorithm.ECDSA512((ECPublicKey) publicKey, null);
         } else {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.ANDROID_SAFETYNET_ATTESTATION_NOT_SUPPORTED_SIGNATURE_ALGORITHM,
-                                                  "Algorithm name: " + algorithm);
+                    "Algorithm name: " + algorithm);
         }
 
         // verify jwt signature
@@ -163,13 +163,13 @@ public class AndroidSafetyNetAttestationVerifier implements AttestationVerifier 
                 }
 
                 if (buffer.length() == 0 ||
-                    (buffer.length() > 0 &&
-                    !ISSUER_HOST_NAME.equals(buffer.toString()))) {
+                        (buffer.length() > 0 &&
+                                !ISSUER_HOST_NAME.equals(buffer.toString()))) {
                     throw new FIDO2ServerRuntimeException(InternalErrorCode.ANDROID_SAFETYNET_ATTESTATION_CERTIFICATE_ISSUER_NAME_INVALID);
                 }
 
                 // check ctsProfileMatch, should be true
-                if(!attestationStatementInfo.isCtsProfileMatch()) {
+                if (!attestationStatementInfo.isCtsProfileMatch()) {
                     throw new FIDO2ServerRuntimeException(InternalErrorCode.ANDROID_SAFETYNET_ATTESTATION_CTS_PROFILE_MATCH_NOT_SET);
                 }
 

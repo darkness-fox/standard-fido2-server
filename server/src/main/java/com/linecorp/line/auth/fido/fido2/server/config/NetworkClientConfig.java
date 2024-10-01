@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class NetworkClientConfig {
     @Bean
-    public RevokeCheckerClient RevokeCheckerClient(){
+    public RevokeCheckerClient RevokeCheckerClient() {
         return new RevokeCheckerClient();
     }
 }

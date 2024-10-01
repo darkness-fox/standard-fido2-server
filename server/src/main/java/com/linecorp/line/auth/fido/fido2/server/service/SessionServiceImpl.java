@@ -52,7 +52,7 @@ public class SessionServiceImpl implements SessionService {
             hmacKey = HmacUtil.generateHmacKey();
         } catch (NoSuchAlgorithmException e) {
             throw new FIDO2ServerRuntimeException(InternalErrorCode.CRYPTO_OPERATION_EXCEPTION,
-                                                  "Exception during generating hmac key", e);
+                    "Exception during generating hmac key", e);
         }
         String hmacKeyString = Base64.getUrlEncoder().withoutPadding().encodeToString(hmacKey.getEncoded());
         session.setId(sessionId);

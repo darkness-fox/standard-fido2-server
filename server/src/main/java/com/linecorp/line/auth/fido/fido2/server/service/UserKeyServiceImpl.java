@@ -74,7 +74,7 @@ public class UserKeyServiceImpl implements UserKeyService {
     public boolean isRegistered(String rpId, String userId) {
         List<UserKeyEntity> userKeyEntities = userKeyRepository.findAllByRpEntityIdAndUserId(rpId, userId);
         return userKeyEntities != null &&
-               !userKeyEntities.isEmpty();
+                !userKeyEntities.isEmpty();
     }
 
     @Override
@@ -118,7 +118,7 @@ public class UserKeyServiceImpl implements UserKeyService {
     public void deleteWithUserId(String rpId, String userId) {
         List<UserKeyEntity> userKeyEntities = userKeyRepository.findAllByRpEntityIdAndUserId(rpId, userId);
         if (userKeyEntities == null ||
-            userKeyEntities.isEmpty()) {
+                userKeyEntities.isEmpty()) {
             throw FIDO2ServerRuntimeException.makeCredNotFoundUser(rpId, userId);
         }
         userKeyEntities.forEach(userKeyRepository::delete);

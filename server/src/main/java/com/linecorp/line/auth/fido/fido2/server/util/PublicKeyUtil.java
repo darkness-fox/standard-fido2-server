@@ -70,6 +70,7 @@ public class PublicKeyUtil {
         KeyFactory keyFactory = KeyFactory.getInstance("ECDH");
         return keyFactory.generatePublic(pubKeySpec);
     }
+
     public static PublicKey getEdDSAPublicKey(byte[] x, String namedCurve) throws NoSuchAlgorithmException, InvalidKeySpecException {
         EdDSANamedCurveSpec spec = EdDSANamedCurveTable.getByName(namedCurve);
 

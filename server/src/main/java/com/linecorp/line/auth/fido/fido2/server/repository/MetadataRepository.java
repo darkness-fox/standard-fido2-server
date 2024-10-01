@@ -25,5 +25,6 @@ import java.util.List;
 @Repository
 public interface MetadataRepository extends CrudRepository<MetadataEntity, Long> {
     MetadataEntity findByAaguid(String aaguid);
+
     List<MetadataEntity> findAllByAaguidIsNull();
 }

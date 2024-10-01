@@ -23,7 +23,10 @@ import com.linecorp.line.auth.fido.fido2.server.model.AttestationObject;
 
 public interface AttestationService {
     AttestationVerificationResult verifyAttestation(byte[] clientDataHsh, AttestationObject attestationObject);
+
     AttestationObject getAttestationObject(ServerAuthenticatorAttestationResponse attestationResponse);
+
     void attestationObjectValidationCheck(String rpId, AuthenticatorSelectionCriteria authenticatorSelection, AttestationObject attestationObject);
+
     void verifyAttestationCertificate(AttestationObject attestationObject, AttestationVerificationResult attestationVerificationResult);
 }

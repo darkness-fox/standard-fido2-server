@@ -28,7 +28,7 @@ public class SignatureHelper {
     public static boolean verifySignature(PublicKey publicKey, byte[] messageBytes, byte[] signatureBytes, COSEAlgorithm algorithm) {
         try {
             if (algorithm == COSEAlgorithm.ES256 ||
-                algorithm == COSEAlgorithm.ES256K) {
+                    algorithm == COSEAlgorithm.ES256K) {
                 return SignatureUtil.verifySHA256withECDSA(publicKey, messageBytes, signatureBytes);
             } else if (algorithm == COSEAlgorithm.ES384) {
                 return SignatureUtil.verifySHA384withECDSA(publicKey, messageBytes, signatureBytes);

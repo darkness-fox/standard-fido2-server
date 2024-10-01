@@ -121,8 +121,8 @@ public enum InternalErrorCode {
     INTERNAL_SERVER_ERROR(999);
 
 
-
-   @Getter private final int code;
+    @Getter
+    private final int code;
 
     public static InternalErrorCode fromCode(int code) {
         return Arrays

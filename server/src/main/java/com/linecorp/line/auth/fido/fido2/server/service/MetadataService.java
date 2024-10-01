@@ -22,6 +22,8 @@ import com.linecorp.line.auth.fido.fido2.common.mdsv3.metadata.MetadataStatement
 
 public interface MetadataService {
     MetadataStatement getMetadataStatementWithAaguid(String aaguid);
+
     List<MetadataStatement> getAllU2FMetadataStatements();
+
     List<MetadataStatement> getAllMetadataStatements();
 }

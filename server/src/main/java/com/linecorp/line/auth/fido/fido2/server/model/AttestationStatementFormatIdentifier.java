@@ -33,12 +33,14 @@ public enum AttestationStatementFormatIdentifier {
     NONE("none"),
     APPLE_ANONYMOUS("apple");
 
-    @JsonValue @Getter private final String value;
+    @JsonValue
+    @Getter
+    private final String value;
 
-    public static AttestationStatementFormatIdentifier fromValue(String value){
+    public static AttestationStatementFormatIdentifier fromValue(String value) {
         return Arrays.stream(AttestationStatementFormatIdentifier.values())
-              .filter(e -> e.value.equals(value))
-              .findFirst()
-              .get();
+                .filter(e -> e.value.equals(value))
+                .findFirst()
+                .get();
     }
 }

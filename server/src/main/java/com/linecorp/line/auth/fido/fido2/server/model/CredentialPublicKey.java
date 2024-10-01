@@ -152,10 +152,10 @@ public abstract class CredentialPublicKey {
             byte[] x = xNode.binaryValue();
 
             credentialPublicKey = OctetKey.builder()
-                                        .algorithm(algorithm)
-                                        .curve(curve)
-                                        .x(x)
-                                        .build();
+                    .algorithm(algorithm)
+                    .curve(curve)
+                    .x(x)
+                    .build();
 
         } else {
             throw new IOException("Not supported algorithm " + algNode.asInt());

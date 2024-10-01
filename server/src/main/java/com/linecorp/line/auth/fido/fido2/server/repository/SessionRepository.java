@@ -20,6 +20,8 @@ import com.linecorp.line.auth.fido.fido2.server.model.Session;
 
 public interface SessionRepository {
     Session getSession(String id);
+
     void save(Session session);
+
     void update(Session session);
 }

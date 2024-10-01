@@ -42,12 +42,12 @@ public class ResponseController {
     @PostMapping(path = "fido2/reg/response")
     public RegisterCredentialResult sendRegResponse(@Valid @RequestBody RegisterCredential registerCredential) {
         return responseService.handleAttestation(registerCredential.getServerPublicKeyCredential(), registerCredential.getSessionId(),
-                                                 registerCredential.getOrigin(), registerCredential.getRpId(), registerCredential.getTokenBinding());
+                registerCredential.getOrigin(), registerCredential.getRpId(), registerCredential.getTokenBinding());
     }
 
     @PostMapping(path = "fido2/auth/response")
     public VerifyCredentialResult sendAuthResponse(@Valid @RequestBody VerifyCredential verifyCredential) {
         return responseService.handleAssertion(verifyCredential.getServerPublicKeyCredential(), verifyCredential.getSessionId(),
-                                               verifyCredential.getOrigin(), verifyCredential.getRpId(), verifyCredential.getTokenBinding());
+                verifyCredential.getOrigin(), verifyCredential.getRpId(), verifyCredential.getTokenBinding());
     }
 }

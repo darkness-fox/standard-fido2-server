@@ -56,9 +56,9 @@ public class CredentialController {
         return GetCredentialResult
                 .builder()
                 .serverResponse(ServerResponse.builder()
-                                              .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
-                                              .internalError(InternalErrorCode.SUCCESS.name())
-                                              .build())
+                        .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
+                        .internalError(InternalErrorCode.SUCCESS.name())
+                        .build())
                 .credential(convert(userKeyService.getWithCredentialId(rpId, credentialId)))
                 .build();
     }
@@ -71,9 +71,9 @@ public class CredentialController {
         return GetCredentialsResult
                 .builder()
                 .serverResponse(ServerResponse.builder()
-                                              .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
-                                              .internalError(InternalErrorCode.SUCCESS.name())
-                                              .build())
+                        .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
+                        .internalError(InternalErrorCode.SUCCESS.name())
+                        .build())
                 .credentials(convert(userKeyService.getWithUserId(rpId, userId)))
                 .build();
     }
@@ -87,9 +87,9 @@ public class CredentialController {
         return BaseResponse
                 .builder()
                 .serverResponse(ServerResponse.builder()
-                                              .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
-                                              .internalError(InternalErrorCode.SUCCESS.name())
-                                              .build())
+                        .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
+                        .internalError(InternalErrorCode.SUCCESS.name())
+                        .build())
                 .build();
     }
 
@@ -102,9 +102,9 @@ public class CredentialController {
         return BaseResponse
                 .builder()
                 .serverResponse(ServerResponse.builder()
-                                              .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
-                                              .internalError(InternalErrorCode.SUCCESS.name())
-                                              .build())
+                        .internalErrorCode(InternalErrorCode.SUCCESS.getCode())
+                        .internalError(InternalErrorCode.SUCCESS.name())
+                        .build())
                 .build();
     }
 

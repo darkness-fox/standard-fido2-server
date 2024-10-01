@@ -41,7 +41,7 @@ public class SignatureUtil {
         Signature signature = Signature.getInstance("SHA256withRSA/PSS");
         MGF1ParameterSpec mgf1spec = MGF1ParameterSpec.SHA256;
         signature.setParameter(new PSSParameterSpec(mgf1spec.getDigestAlgorithm(), "MGF1",
-                                                    mgf1spec, 32, 1));
+                mgf1spec, 32, 1));
 
         signature.initVerify(publicKey);
         signature.update(messageBytes);
@@ -54,7 +54,7 @@ public class SignatureUtil {
         Signature signature = Signature.getInstance("SHA384withRSA/PSS");
         MGF1ParameterSpec mgf1spec = MGF1ParameterSpec.SHA384;
         signature.setParameter(new PSSParameterSpec(mgf1spec.getDigestAlgorithm(), "MGF1",
-                                                    mgf1spec, 48, 1));
+                mgf1spec, 48, 1));
 
         signature.initVerify(publicKey);
         signature.update(messageBytes);
@@ -67,7 +67,7 @@ public class SignatureUtil {
         Signature signature = Signature.getInstance("SHA512withRSA/PSS");
         MGF1ParameterSpec mgf1spec = MGF1ParameterSpec.SHA512;
         signature.setParameter(new PSSParameterSpec(mgf1spec.getDigestAlgorithm(), "MGF1",
-                                                    mgf1spec, 64, 1));
+                mgf1spec, 64, 1));
 
         signature.initVerify(publicKey);
         signature.update(messageBytes);
@@ -81,7 +81,7 @@ public class SignatureUtil {
         Signature signature = Signature.getInstance("SHA256withRSA/PSS");
         MGF1ParameterSpec mgf1spec = MGF1ParameterSpec.SHA256;
         signature.setParameter(new PSSParameterSpec(mgf1spec.getDigestAlgorithm(), "MGF1",
-                                                    mgf1spec, 32, 1));
+                mgf1spec, 32, 1));
         signature.initSign(privateKey);
         signature.update(messageBytes);
 
@@ -163,6 +163,7 @@ public class SignatureUtil {
 
     /**
      * Get DER encoded ECDSA signature from raw encoded signature
+     *
      * @param rawSignature
      * @return
      * @throws IOException
@@ -183,6 +184,7 @@ public class SignatureUtil {
 
     /**
      * Get raw RSASA-PSS signature from DER encoded signature
+     *
      * @param derSignature
      * @return
      * @throws IOException

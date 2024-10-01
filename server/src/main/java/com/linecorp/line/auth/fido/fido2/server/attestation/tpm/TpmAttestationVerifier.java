@@ -190,7 +190,7 @@ public class TpmAttestationVerifier implements AttestationVerifier {
 
         // 6-1. not ECDAA (AttCA)
         if (tpm.getX5c() != null &&
-            !tpm.getX5c().isEmpty()) {
+                !tpm.getX5c().isEmpty()) {
             List<Certificate> certificateList;
             try {
                 certificateList = CertificateUtil.getCertificates(tpm.getX5c());
@@ -228,7 +228,7 @@ public class TpmAttestationVerifier implements AttestationVerifier {
     }
 
     private void verifyTpmAikCert(X509Certificate aikCert) {
-        final String OID_TCG_KP_AIK_CERTIFICATE  = "2.23.133.8.3";
+        final String OID_TCG_KP_AIK_CERTIFICATE = "2.23.133.8.3";
         final ASN1ObjectIdentifier OCSP_ACCESS_METHOD = X509ObjectIdentifiers.ocspAccessMethod;
         final ASN1ObjectIdentifier CRL_ACCESS_METHOD = X509ObjectIdentifiers.crlAccessMethod;
         final String OID_TCG_AT_TPM_MANUFACTURER = "2.23.133.2.1";
@@ -254,11 +254,11 @@ public class TpmAttestationVerifier implements AttestationVerifier {
                 throw new FIDO2ServerRuntimeException(InternalErrorCode.TPM_ATTESTATION_CERTIFICATE_SAN_INVALID);
             }
 
-            Iterator itAltNames  = subjectAltNames.iterator();
+            Iterator itAltNames = subjectAltNames.iterator();
 
             TpmSubjectAlternativeName.TpmSubjectAlternativeNameBuilder builder =
                     TpmSubjectAlternativeName.builder();
-            while(itAltNames.hasNext()) {
+            while (itAltNames.hasNext()) {
                 List extensionEntry = (List) itAltNames.next();
                 Object name = extensionEntry.get(1);
 

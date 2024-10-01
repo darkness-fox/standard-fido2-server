@@ -41,7 +41,8 @@ public enum TpmSt {
     AUTH_SIGNED(0x8025),
     FU_MANIFEST(0x8029);
 
-    @Getter private final int value;
+    @Getter
+    private final int value;
 
     public static TpmSt fromValue(int value) {
         return Arrays.stream(TpmSt.values())

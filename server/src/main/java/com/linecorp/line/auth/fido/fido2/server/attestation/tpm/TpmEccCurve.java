@@ -33,7 +33,8 @@ public enum TpmEccCurve {
     BN_P638(0x0011),
     SM2_P256(0x0020);
 
-    @Getter private final int value;
+    @Getter
+    private final int value;
 
     public static TpmEccCurve fromValue(int value) {
         return Arrays.stream(TpmEccCurve.values())

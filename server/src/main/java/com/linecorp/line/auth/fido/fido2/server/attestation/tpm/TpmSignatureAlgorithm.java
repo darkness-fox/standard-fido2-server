@@ -30,12 +30,13 @@ public enum TpmSignatureAlgorithm {
     SM2(0x001B),
     ECSCHNORR(0x001C);
 
-    @Getter private final int value;
+    @Getter
+    private final int value;
 
     public static TpmSignatureAlgorithm fromValue(int value) {
         return Arrays.stream(TpmSignatureAlgorithm.values())
-                     .filter(e -> e.value == value)
-                     .findFirst()
-                     .get();
+                .filter(e -> e.value == value)
+                .findFirst()
+                .get();
     }
 }

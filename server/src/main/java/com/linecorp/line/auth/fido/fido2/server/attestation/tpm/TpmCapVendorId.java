@@ -30,7 +30,7 @@ public enum TpmCapVendorId {
     IBM(0x49424D00, "IBM"),
     INFINEON(0x49465800, "Infineon"),
     INTEL(0x494E5443, "Intel"),
-    LENOVO(0x4C454E00 ,"Lenovo"),
+    LENOVO(0x4C454E00, "Lenovo"),
     MICROSOFT(0x4D534654, "Microsoft"),
     NATIONAL_SEMI(0x4E534D20, "National Semi"),
     NUVOTON_TECHNOLOGY(0x4E544300, "Nuvoton Technology"),
@@ -53,8 +53,8 @@ public enum TpmCapVendorId {
 
     public static TpmCapVendorId fromValue(long value) {
         return Arrays.stream(TpmCapVendorId.values())
-                     .filter(e -> e.value == value)
-                     .findFirst()
-                     .get();
+                .filter(e -> e.value == value)
+                .findFirst()
+                .get();
     }
 }

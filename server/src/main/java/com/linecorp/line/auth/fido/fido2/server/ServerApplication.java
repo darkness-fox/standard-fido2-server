@@ -27,7 +27,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableScheduling
 @EntityScan
 public class ServerApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(ServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ServerApplication.class, args);
+    }
 }

@@ -95,7 +95,7 @@ public class PackedAttestationVerifier implements AttestationVerifier {
         // basic
         String base64UrlEncodedSignature = Base64.getUrlEncoder().withoutPadding().encodeToString(packed.getSig());
         if (packed.getX5c() != null &&
-            !packed.getX5c().isEmpty()) {
+                !packed.getX5c().isEmpty()) {
             log.debug("Basic Attestation Type");
             log.debug("Generate certificate list with x5c");
             List<Certificate> certificateList;
@@ -117,7 +117,7 @@ public class PackedAttestationVerifier implements AttestationVerifier {
 
             X509Certificate certificate = (X509Certificate) certificateList.get(0);
             byte[] aaguidFromCredCert = extractAaguidFromCredCert(certificate);
-            if(aaguidFromCredCert != null) {
+            if (aaguidFromCredCert != null) {
                 byte[] aaguidFromAttestedCredentialData = authenticatorData.getAttestedCredentialData().getAaguid();
                 if (!Arrays.equals(aaguidFromCredCert, aaguidFromAttestedCredentialData)) {
                     throw new FIDO2ServerRuntimeException(InternalErrorCode.PACKED_ATTESTATION_AAGUID_NOT_MATCHED);
@@ -143,7 +143,7 @@ public class PackedAttestationVerifier implements AttestationVerifier {
                     if (algorithm != rsaKey.getAlgorithm()) {
                         // error (not matched)
                         throw new FIDO2ServerRuntimeException(InternalErrorCode.PACKED_ATTESTATION_ALGORITHM_NOT_MATCHED,
-                                                              "Alg in statement: " + algorithm + ", in credential public key: " + rsaKey.getAlgorithm());
+                                "Alg in statement: " + algorithm + ", in credential public key: " + rsaKey.getAlgorithm());
                     } else {
                         // convert
                         try {
@@ -162,12 +162,12 @@ public class PackedAttestationVerifier implements AttestationVerifier {
                     if (algorithm != eccKey.getAlgorithm()) {
                         // error (not matched)
                         throw new FIDO2ServerRuntimeException(InternalErrorCode.PACKED_ATTESTATION_ALGORITHM_NOT_MATCHED,
-                                                              "Alg in statement: " + algorithm + ", in credential public key: " + eccKey.getAlgorithm());
+                                "Alg in statement: " + algorithm + ", in credential public key: " + eccKey.getAlgorithm());
                     } else {
                         // convert
                         try {
                             publicKey = PublicKeyUtil.getECDSAPublicKey(eccKey.getX(), eccKey.getY(),
-                                                                        eccKey.getCurve().getNamedCurve());
+                                    eccKey.getCurve().getNamedCurve());
                         } catch (GeneralSecurityException e) {
                             throw new FIDO2ServerRuntimeException(
                                     InternalErrorCode.USER_PUBLIC_KEY_INVALID_KEY_SPEC, e);
@@ -183,12 +183,12 @@ public class PackedAttestationVerifier implements AttestationVerifier {
                     if (algorithm != octetKey.getAlgorithm()) {
                         // error (not matched)
                         throw new FIDO2ServerRuntimeException(InternalErrorCode.PACKED_ATTESTATION_ALGORITHM_NOT_MATCHED,
-                                                              "Alg in statement: " + algorithm + ", in credential public key: " + octetKey.getAlgorithm());
+                                "Alg in statement: " + algorithm + ", in credential public key: " + octetKey.getAlgorithm());
                     } else {
                         // convert
                         try {
                             publicKey = PublicKeyUtil.getEdDSAPublicKey(octetKey.getX(),
-                                                                        octetKey.getCurve().getNamedCurve());
+                                    octetKey.getCurve().getNamedCurve());
                         } catch (GeneralSecurityException e) {
                             throw new FIDO2ServerRuntimeException(
                                     InternalErrorCode.USER_PUBLIC_KEY_INVALID_KEY_SPEC, e);

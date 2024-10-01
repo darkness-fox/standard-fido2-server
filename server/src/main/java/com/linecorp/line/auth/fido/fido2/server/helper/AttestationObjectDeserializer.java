@@ -126,7 +126,7 @@ public class AttestationObjectDeserializer extends StdDeserializer<AttestationOb
             }
 
         }
-        AttestationStatement attStmt  = (AttestationStatement) objectMapper.treeToValue(attStmtNode, attestationStatement);
+        AttestationStatement attStmt = (AttestationStatement) objectMapper.treeToValue(attStmtNode, attestationStatement);
 
         AttestationObject attestationObject = new AttestationObject();
         attestationObject.setFmt(fmt);

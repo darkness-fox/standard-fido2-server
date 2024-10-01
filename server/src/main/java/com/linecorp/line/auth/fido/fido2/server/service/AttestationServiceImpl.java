@@ -195,7 +195,7 @@ public class AttestationServiceImpl implements AttestationService {
             boolean enableRevocation = hasCRLDistPointForRevokeCheck(attestationVerificationResult);
 
             if (attestationObject.getFmt() == AttestationStatementFormatIdentifier.ANDROID_KEY) {
-                if (AdditionalRevokeChecker.hasAndroidKeyAttestationRevokedCert(revokeCheckerClient,attestationVerificationResult.getTrustPath())) {
+                if (AdditionalRevokeChecker.hasAndroidKeyAttestationRevokedCert(revokeCheckerClient, attestationVerificationResult.getTrustPath())) {
                     throw new FIDO2ServerRuntimeException(InternalErrorCode.CERTIFICATE_PATH_VALIDATION_FAIL);
                 }
             }

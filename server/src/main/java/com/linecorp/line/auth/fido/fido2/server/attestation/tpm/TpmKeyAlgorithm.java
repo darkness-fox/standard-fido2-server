@@ -28,7 +28,8 @@ public enum TpmKeyAlgorithm {
     RSA(0x0001),
     ECC(0x0023);
 
-    @Getter private final int value;
+    @Getter
+    private final int value;
 
     public static TpmKeyAlgorithm fromValue(int value) {
         return Arrays.stream(TpmKeyAlgorithm.values())

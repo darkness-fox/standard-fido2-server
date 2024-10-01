@@ -35,11 +35,11 @@ public enum Transports {
     @Getter
     private final int value;
 
-    @JsonCreator(mode=JsonCreator.Mode.DELEGATING)
-    public static Transports fromValue(int value){
+    @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
+    public static Transports fromValue(int value) {
         return Arrays.stream(Transports.values())
-                     .filter(e -> e.value == value)
-                     .findFirst()
-                     .get();
+                .filter(e -> e.value == value)
+                .findFirst()
+                .get();
     }
 }
